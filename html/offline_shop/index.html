@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Offline Shop</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container" id="offlineShop" style="display: none;">
+        <!-- Header -->
+        <div class="header">
+            <div class="header-left">
+                <i class="fas fa-store"></i>
+                <h1 id="shopTitle">Restaurant Shop</h1>
+            </div>
+            <button class="close-btn" id="closeBtn">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+
+        <div class="content-wrapper">
+            <!-- Left: Items Grid -->
+            <div class="items-section">
+                <div class="section-header">
+                    <h2><i class="fas fa-utensils"></i> Menu</h2>
+                </div>
+
+                <div class="items-grid" id="itemsGrid">
+                    <div class="empty-state">
+                        <i class="fas fa-box-open"></i>
+                        <p>Geen items beschikbaar</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right: Cart -->
+            <div class="cart-panel">
+                <div class="cart-header">
+                    <h3><i class="fas fa-shopping-cart"></i> Winkelwagen</h3>
+                    <span class="cart-count" id="cartCount">0</span>
+                </div>
+
+                <div class="cart-items" id="cartItems">
+                    <div class="empty-cart">
+                        <i class="fas fa-cart-plus"></i>
+                        <p>Winkelwagen is leeg</p>
+                    </div>
+                </div>
+
+                <!-- Payment Method -->
+                <div class="payment-selection">
+                    <label>Betaalmethode:</label>
+                    <div class="payment-methods">
+                        <button class="payment-method active" data-method="cash">
+                            <i class="fas fa-money-bill-wave"></i>
+                            <span>Contant</span>
+                        </button>
+                        <button class="payment-method" data-method="bank">
+                            <i class="fas fa-credit-card"></i>
+                            <span>Bank</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Cart Summary -->
+                <div class="cart-summary">
+                    <div class="summary-row total">
+                        <span>Totaal:</span>
+                        <span id="total">$0</span>
+                    </div>
+
+                    <button class="btn btn-primary btn-purchase" id="purchaseBtn" disabled>
+                        <i class="fas fa-check"></i> Afrekenen
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
