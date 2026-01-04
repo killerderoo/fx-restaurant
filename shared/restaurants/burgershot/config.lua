@@ -268,6 +268,18 @@ Restaurant = {
             distance = 3.0,
             label = 'Ophalen',
             icon = 'fa-solid fa-hand-holding'
+        },
+        
+        -- Delivery Pickup Point ✅ NIEUW
+        delivery_pickup = {
+            coords = vector3(-1190.12, -900.34, 13.99),  -- PAS AAN
+            size = vector3(1.5, 1.5, 2.0),
+            heading = 35.0,
+            minZ = 12.99,
+            maxZ = 14.99,
+            distance = 3.0,
+            label = 'Start Bezorging',
+            icon = 'fa-solid fa-truck'
         }
     },
     
