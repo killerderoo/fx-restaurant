@@ -117,6 +117,11 @@ function SetupRestaurantZones(restaurant)
     if restaurant.zones.drivethrough_speaker and restaurant.features.driveThrough then
         SetupDriveThroughZone(id, restaurant.zones.drivethrough_speaker)
     end
+    
+    -- Delivery Pickup Point ✅ NIEUW
+    if restaurant.zones.delivery_pickup and restaurant.features.delivery then
+        SetupDeliveryZone(id, restaurant.zones.delivery_pickup)
+    end
 end
 
 --=====================================================
@@ -476,6 +481,38 @@ CreateThread(function()
     
     print('^2[FX-RESTAURANT] All zones initialized^0')
 end)
+
+--=====================================================
+-- DELIVERY ZONE
+--=====================================================
+
+function SetupDeliveryZone(restaurant, zone)
+    local zoneName = restaurant .. '_delivery'
+    
+    Target.AddBoxZone({
+        name = zoneName,
+        coords = zone.coords,
+        size = zone.size or vector3(1.5, 1.5, 2.0),
+        heading = zone.heading or 0.0,
+        minZ = zone.minZ or zone.coords.z - 1.0,
+        maxZ = zone.maxZ or zone.coords.z + 1.0,
+        distance = zone.distance or 3.0,
+        options = {
+            {
+                icon = zone.icon or 'fa-solid fa-truck',
+                label = zone.label or 'Start Bezorging',
+                canInteract = function()
+                    return lib.callback.await('fx-restaurant:hasJob', false, restaurant)
+                end,
+                onSelect = function()
+                    exports['fx-restaurant']:StartDelivery(restaurant)
+                end
+            }
+        }
+    })
+    
+    activeZones[zoneName] = true
+end
 
 --=====================================================
 -- CLEANUP ON RESOURCE STOP
