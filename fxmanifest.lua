@@ -24,14 +24,14 @@ client_scripts {
     'client/bridge.lua',            -- Target system bridge
     'client/calories.lua',          -- Client-side buffs/needs
     'client/bossmenu.lua',          -- Boss menu UI
-    'client/zones.lua',             -- Zone spawning
+    'client/zones.lua',             -- Zone spawning (updated)
     'client/npc.lua',               -- NPC spawning
     'client/ingredient_shop.lua',   -- Ingredient shop UI
     'client/stations.lua',          -- Stations (prep/cooking)
-    'client/cashier.lua',           -- Cashier UI ✅ UPDATED
-    'client/trays.lua',             -- Serving trays ✅ NIEUW
+    'client/cashier.lua',           -- Cashier UI
+    'client/trays.lua',             -- Serving trays
+    'client/delivery.lua',          -- Delivery system ✅ UPDATED
     'client/main.lua',
-    'client/delivery.lua',
     'client/music.lua',
     'client/flyer.lua',
     'client/props.lua'
@@ -49,9 +49,9 @@ server_scripts {
     'server/recipes.lua',           -- Recipe CRUD
     'server/bossmenu.lua',          -- Boss menu backend
     'server/ingredients.lua',       -- Ingredient shop & stations
-    'server/cashier.lua',           -- Cashier system ✅ UPDATED
-    'server/trays.lua',             -- Serving trays ✅ NIEUW
-    'server/delivery.lua',
+    'server/cashier.lua',           -- Cashier system
+    'server/trays.lua',             -- Serving trays
+    'server/delivery.lua',          -- Delivery system ✅ UPDATED
     'server/offline_shop.lua',
     'server/security.lua'
 }
