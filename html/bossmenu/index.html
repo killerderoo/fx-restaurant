@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boss Menu</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container" id="bossMenu" style="display: none;">
+        <!-- Header -->
+        <div class="header">
+            <div class="header-left">
+                <i class="fas fa-utensils"></i>
+                <h1>Boss Menu</h1>
+            </div>
+            <button class="close-btn" id="closeBtn">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+
+        <!-- Navigation Tabs -->
+        <div class="tabs">
+            <button class="tab-btn active" data-tab="management">
+                <i class="fas fa-chart-line"></i>
+                Management
+            </button>
+            <button class="tab-btn" data-tab="recipes">
+                <i class="fas fa-book"></i>
+                Recepten
+            </button>
+            <button class="tab-btn" data-tab="menu">
+                <i class="fas fa-image"></i>
+                Menu Afbeelding
+            </button>
+            <button class="tab-btn" data-tab="shop">
+                <i class="fas fa-store"></i>
+                Offline Shop
+            </button>
+        </div>
+
+        <!-- Content Container -->
+        <div class="content">
+            
+            <!-- ================================================= -->
+            <!-- MANAGEMENT TAB -->
+            <!-- ================================================= -->
+            <div class="tab-content active" id="management-tab">
+                <!-- Statistics Cards -->
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-shopping-bag"></i>
+                        </div>
+                        <div class="stat-info">
+                            <span class="stat-label">Orders Vandaag</span>
+                            <span class="stat-value" id="stat-orders-today">0</span>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-dollar-sign"></i>
+                        </div>
+                        <div class="stat-info">
+                            <span class="stat-label">Omzet Vandaag</span>
+                            <span class="stat-value" id="stat-revenue-today">$0</span>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-chart-bar"></i>
+                        </div>
+                        <div class="stat-info">
+                            <span class="stat-label">Totale Orders (30d)</span>
+                            <span class="stat-value" id="stat-total-orders">0</span>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-truck"></i>
+                        </div>
+                        <div class="stat-info">
+                            <span class="stat-label">Bezorgingen (30d)</span>
+                            <span class="stat-value" id="stat-deliveries">0</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Employees Section -->
+                <div class="section">
+                    <div class="section-header">
+                        <h2><i class="fas fa-users"></i> Medewerkers</h2>
+                        <button class="btn btn-primary" id="hireEmployeeBtn">
+                            <i class="fas fa-user-plus"></i> Aannemen
+                        </button>
+                    </div>
+                    
+                    <div class="table-container">
+                        <table class="employees-table">
+                            <thead>
+                                <tr>
+                                    <th>Naam</th>
+                                    <th>Rang</th>
+                                    <th>Aangenomen op</th>
+                                    <th>Acties</th>
+                                </tr>
+                            </thead>
+                            <tbody id="employeesTableBody">
+                                <tr class="empty-state">
+                                    <td colspan="4">Geen medewerkers gevonden</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ================================================= -->
+            <!-- RECIPES TAB -->
+            <!-- ================================================= -->
+            <div class="tab-content" id="recipes-tab">
+                <div class="section-header">
+                    <h2><i class="fas fa-book"></i> Recepten Beheren</h2>
+                    <button class="btn btn-primary" id="createRecipeBtn">
+                        <i class="fas fa-plus"></i> Nieuw Recept
+                    </button>
+                </div>
+
+                <div class="recipes-grid" id="recipesGrid">
+                    <div class="empty-state">
+                        <i class="fas fa-utensils"></i>
+                        <p>Geen recepten gevonden</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ================================================= -->
+            <!-- MENU IMAGES TAB -->
+            <!-- ================================================= -->
+            <div class="tab-content" id="menu-tab">
+                <div class="section">
+                    <div class="section-header">
+                        <h2><i class="fas fa-image"></i> Menu Afbeelding</h2>
+                        <button class="btn btn-primary" id="updateMenuImageBtn">
+                            <i class="fas fa-upload"></i> Afbeelding Bijwerken
+                        </button>
+                    </div>
+
+                    <div class="menu-preview" id="menuPreview">
+                        <div class="empty-state">
+                            <i class="fas fa-image"></i>
+                            <p>Geen menu afbeelding ingesteld</p>
+                            <small>Gebruik https://ibb.co/ of imgur.com</small>
+                        </div>
+                    </div>
+
+                    <div class="info-box">
+                        <i class="fas fa-info-circle"></i>
+                        <div>
+                            <strong>Hoe werkt het?</strong>
+                            <p>Upload je menu afbeelding naar https://ibb.co/ of imgur.com en kopieer de directe link. Deze afbeelding wordt getoond wanneer spelers een flyer pakken.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ================================================= -->
+            <!-- OFFLINE SHOP TAB -->
+            <!-- ================================================= -->
+            <div class="tab-content" id="shop-tab">
+                <div class="section-header">
+                    <h2><i class="fas fa-store"></i> Offline Shop Beheren</h2>
+                    <button class="btn btn-primary" id="addShopItemBtn">
+                        <i class="fas fa-plus"></i> Item Toevoegen
+                    </button>
+                </div>
+
+                <div class="info-box">
+                    <i class="fas fa-info-circle"></i>
+                    <div>
+                        <strong>Let op:</strong>
+                        <p>Alleen afgewerkte producten kunnen in de offline shop verkocht worden. Klanten kunnen hier items kopen wanneer er geen personeel online is.</p>
+                    </div>
+                </div>
+
+                <div class="table-container">
+                    <table class="shop-table">
+                        <thead>
+                            <tr>
+                                <th>Item</th>
+                                <th>Prijs</th>
+                                <th>Voorraad</th>
+                                <th>Status</th>
+                                <th>Acties</th>
+                            </tr>
+                        </thead>
+                        <tbody id="shopTableBody">
+                            <tr class="empty-state">
+                                <td colspan="5">Geen items in de shop</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- ================================================= -->
+    <!-- MODAL: Create/Edit Recipe -->
+    <!-- ================================================= -->
+    <div class="modal" id="recipeModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="recipeModalTitle">Nieuw Recept</h2>
+                <button class="close-btn" onclick="closeRecipeModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <div class="modal-body">
+                <form id="recipeForm">
+                    <input type="hidden" id="recipeId">
+                    
+                    <div class="form-group">
+                        <label>Naam *</label>
+                        <input type="text" id="recipeName" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Beschrijving</label>
+                        <textarea id="recipeDescription" rows="3"></textarea>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Type *</label>
+                            <select id="recipeType" required>
+                                <option value="food">Eten</option>
+                                <option value="drink">Drinken</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Station *</label>
+                            <select id="recipeStation" required>
+                                <option value="grill">Grill</option>
+                                <option value="fryer">Frituur</option>
+                                <option value="oven">Oven</option>
+                                <option value="drinks">Dranken</option>
+                                <option value="preparation">Voorbereiding</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Prijs *</label>
+                            <input type="number" id="recipePrice" min="1" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Animatie</label>
+                            <input type="text" id="recipeAnimation" placeholder="grill_flip">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Afbeelding URL</label>
+                        <input type="text" id="recipeImage" placeholder="https://i.ibb.co/...">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="recipeActive">
+                            <span>Actief (zichtbaar voor medewerkers)</span>
+                        </label>
+                    </div>
+
+                    <div class="form-group">
+                        <label>
+                            Ingrediënten *
+                            <button type="button" class="btn-small" onclick="addIngredient()">
+                                <i class="fas fa-plus"></i> Toevoegen
+                            </button>
+                        </label>
+                        <div id="ingredientsList"></div>
+                    </div>
+                </form>
+            </div>
+
+            <div class="modal-footer">
+                <button class="btn btn-secondary" onclick="closeRecipeModal()">Annuleren</button>
+                <button class="btn btn-primary" onclick="saveRecipe()">Opslaan</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
